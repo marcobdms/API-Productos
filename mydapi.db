@@ -1,0 +1,58 @@
+CREATE DATABASE mydb12;
+use mydb12;
+
+DROP DATABASE mydb12;
+
+#First table
+create table categorias(
+	id int primary key auto_increment,
+    nombre varchar(120)
+);
+
+drop table categorias;
+
+drop table productos;
+
+drop table fabricantes;
+
+insert into categorias(id, nombre)
+values(1,'Alta');
+
+#Second table
+create table fabricantes(
+	id int primary key auto_increment,
+	nombre varchar(120)
+);
+
+insert into fabricantes(id, nombre)
+values(1,'Marco');
+
+#Tirth table
+create table productos(
+	id int primary key auto_increment not null,
+	nombre varchar(120),
+    categoria_id int,
+    fabricante_id int,
+    precio int,
+    stock bool,
+    FOREIGN KEY (categoria_id) REFERENCES categorias(id),
+    FOREIGN KEY (fabricante_id) REFERENCES fabricantes(id)
+);
+
+drop table productos;
+
+INSERT INTO productos (nombre, categoria_id, precio, stock)
+VALUES ('Amazing', 1, 300, true);
+
+SELECT * FROM productos;
+
+SELECT * FROM categorias;
+
+SELECT * FROM fabricantes;
+
+DESCRIBE productos;
+
+DESCRIBE categorias;
+
+DESCRIBE fabricantes;
+
